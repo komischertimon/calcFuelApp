@@ -9,25 +9,31 @@ public class CalcRaceDistance {
         this.pitstop = pitstop;
 
     }
-    public int calculateDistance () {
+    public double[] calculateDistance () {
         int raceDistanceSec = raceDistance * 60;
         double dbl_distanceLaps;
         int int_distanceLaps;
         double diff;
+        double[] resultArray = new double[2];
 
         if(pitstop == true) {
-            dbl_distanceLaps = (raceDistanceSec - 44)/ lapTime;
+            dbl_distanceLaps = (double) (raceDistanceSec - 44)/ lapTime;
         } else {
-            dbl_distanceLaps = raceDistanceSec / lapTime;
+            dbl_distanceLaps = (double) raceDistanceSec / lapTime;
         }
 
         int_distanceLaps = (int) (raceDistanceSec / lapTime);
         diff = dbl_distanceLaps - int_distanceLaps;
 
+        resultArray[0] = dbl_distanceLaps;
+
+
         if (diff >= 0.7) {
-            return int_distanceLaps += 2;
+            resultArray[1] = int_distanceLaps += 2;
+            return resultArray;
         } else {
-            return int_distanceLaps += 1;
+            resultArray[1] = int_distanceLaps += 1;
+            return resultArray;
         }
     }
 }

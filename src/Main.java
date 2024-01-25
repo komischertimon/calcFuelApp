@@ -4,15 +4,19 @@ public class Main {
     public static boolean pitstop = false;
     public static double consumption = 2.75;
     public static void main(String[] args) {
+
         CalcTime laptimeSec = new CalcTime(laptime);
         CalcRaceDistance drivenLaps = new CalcRaceDistance(raceDistance, laptimeSec.convert(), pitstop);
-        CalcFuel fuelConsumption = new CalcFuel(drivenLaps.calculateDistance(), consumption);
+
+        double[] distanceArray = drivenLaps.calculateDistance();
+
+        CalcFuel fuelConsumption = new CalcFuel((int) distanceArray[1], consumption);
 
         System.out.println("Dauer des Rennen: " + raceDistance);
-        System.out.println("Rennrunden: "+ drivenLaps.calculateDistance());
+        System.out.println("Rennrunden: "+ distanceArray[1]);
         System.out.println("______");
         System.out.println("Rundenzeit in Sekunden: "+laptimeSec.convert());
-        System.out.println("Tatsächliche Rundenanzahl: ");
+        System.out.println("Tatsächliche Rundenanzahl: "+ distanceArray[0]);
         System.out.println("______");
         System.out.println("Benötigtes Kraftstoff: "+ fuelConsumption.calcualte());
     }
