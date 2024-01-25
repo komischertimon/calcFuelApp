@@ -1,9 +1,9 @@
 public class CalcRaceDistance {
     private int raceDistance;
-    private double lapTime;
+    private int lapTime;
     private boolean pitstop;
 
-    public CalcRaceDistance (int raceDistance, double lapTime, boolean pitstop){
+    public CalcRaceDistance (int raceDistance, int lapTime, boolean pitstop){
         this.raceDistance = raceDistance;
         this.lapTime = lapTime;
         this.pitstop = pitstop;
@@ -17,12 +17,11 @@ public class CalcRaceDistance {
 
         if(pitstop == true) {
             dbl_distanceLaps = (raceDistanceSec - 44)/ lapTime;
-            int_distanceLaps = (int) (raceDistanceSec / lapTime);
         } else {
             dbl_distanceLaps = raceDistanceSec / lapTime;
-            int_distanceLaps = (int) (raceDistanceSec / lapTime);
         }
 
+        int_distanceLaps = (int) (raceDistanceSec / lapTime);
         diff = dbl_distanceLaps - int_distanceLaps;
 
         if (diff >= 0.7) {
